@@ -1,7 +1,12 @@
 # Домашнее задание к занятию 1 «Введение в Ansible»
 <details><summary>Решение:</summary>
 </details>
+![запуск ansible]()
 
+
+```shell
+
+```
 ## Основная часть
 
 1. Попробуйте запустить playbook на окружении из `test.yml`, зафиксируйте значение, которое имеет факт `some_fact` для указанного хоста при выполнении playbook.
@@ -18,12 +23,64 @@ some_fact=12
 
 <details><summary>Решение:</summary>
 
+
+![Проверка артефакта](https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/step2.png)
 </details>
+
+
 3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.
+
+<details><summary>Решение:</summary>
+
+![Check docker conteiners](https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/create%20containers.png)
+</details>
+
 
 4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
 
+<details><summary>Решение:</summary>
+
+```shell
+$ ansible-playbook site.yml -i inventory/prod.yml
+
+PLAY [Print os facts] *******************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************************************************
+ok: [ubuntu]
+ok: [centos7]
+
+TASK [Print OS] *************************************************************************************************************************************************************************
+ok: [centos7] => {
+    "msg": "CentOS"
+}
+ok: [ubuntu] => {
+    "msg": "Ubuntu"
+}
+
+TASK [Print fact] ***********************************************************************************************************************************************************************
+ok: [centos7] => {
+    "msg": "el"
+}
+ok: [ubuntu] => {
+    "msg": "deb"
+}
+
+PLAY RECAP ******************************************************************************************************************************************************************************
+centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+
+
+</details>
+
+
 5. Добавьте факты в `group_vars` каждой из групп хостов так, чтобы для `some_fact` получились значения: для `deb` — `deb default fact`, для `el` — `el default fact`.
+
+<details><summary>Решение:</summary>
+
+![изменение facts](https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/new%20facts%20deb%2Cel.png)
+
+</details>
 
 6.  Повторите запуск playbook на окружении `prod.yml`. Убедитесь, что выдаются корректные значения для всех хостов.
 
