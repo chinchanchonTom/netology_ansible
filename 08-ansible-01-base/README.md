@@ -1,17 +1,24 @@
 # Домашнее задание к занятию 1 «Введение в Ansible»
-
+<details><summary>Решение:</summary>
+</details>
 
 ## Основная часть
 
 1. Попробуйте запустить playbook на окружении из `test.yml`, зафиксируйте значение, которое имеет факт `some_fact` для указанного хоста при выполнении playbook.
 
 <details><summary>Решение:</summary>
+
 some_fact=12
+![запуск ansible](https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/step1%20facts.png)
+
+</details>
 
 
 2. Найдите файл с переменными (group_vars), в котором задаётся найденное в первом пункте значение, и поменяйте его на `all default fact`.
 
+<details><summary>Решение:</summary>
 
+</details>
 3. Воспользуйтесь подготовленным (используется `docker`) или создайте собственное окружение для проведения дальнейших испытаний.
 
 4. Проведите запуск playbook на окружении из `prod.yml`. Зафиксируйте полученные значения `some_fact` для каждого из `managed host`.
