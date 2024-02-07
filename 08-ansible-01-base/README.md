@@ -1,12 +1,5 @@
 # Домашнее задание к занятию 1 «Введение в Ansible»
-<details><summary>Решение:</summary>
-</details>
-![запуск ansible]()
 
-
-```shell
-
-```
 ## Основная часть
 
 1. Попробуйте запустить playbook на окружении из `test.yml`, зафиксируйте значение, которое имеет факт `some_fact` для указанного хоста при выполнении playbook.
@@ -84,19 +77,92 @@ ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    s
 
 6.  Повторите запуск playbook на окружении `prod.yml`. Убедитесь, что выдаются корректные значения для всех хостов.
 
+<details><summary>Решение:</summary>
+
+![check facts](https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/new%20facts%20deb%2Cel.png)
+
+</details>
+
+
 7. При помощи `ansible-vault` зашифруйте факты в `group_vars/deb` и `group_vars/el` с паролем `netology`.
+
+
+
+<details><summary>Решение:</summary>
+
+```shell
+ansible-vault encrypt group_vars/{deb,el}/examp.yml
+New Vault password: 
+Confirm New Vault password: 
+Encryption successful
+```
+
+![example descrypt](https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/%D0%9F%D1%80%D0%B8%D0%BC%D0%B5%D1%80%20%D1%88%D0%B8%D1%84%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F.png)
+
+
+
+</details>
+
+
 
 8. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь в работоспособности.
 
+
+<details><summary>Решение:</summary>
+
+![check ](https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/prod_vault.png)
+
+
+
+</details>
+
+
+
+
 9. Посмотрите при помощи `ansible-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
 
+
+<details><summary>Решение:</summary>
+
+![search doc](https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/ansible-doc.png)
+
+
+
+</details>
+
+
+
 10. В `prod.yml` добавьте новую группу хостов с именем  `local`, в ней разместите localhost с необходимым типом подключения.
+
+<details><summary>Решение:</summary>
+
+Тут назвал рандомно группу win7 в коде изменил.
+
+![search doc](https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/%D0%BD%D0%BE%D0%B2%D0%B0%D1%8F%20%D0%B3%D1%80%D1%83%D0%BF%D0%BF%D0%B0%20%D1%85%D0%BE%D1%81%D1%82%D0%BE%D0%B2.png)
+
+
+
+</details>
+
 
 11. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь, что факты `some_fact` для каждого из хостов определены из 
 верных `group_vars`.
 
+<details><summary>Решение:</summary>
+
+
+
+![search doc](https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/prod_vault.png)
+
+
+
+</details>
+
+
 
 12. Заполните `README.md` ответами на вопросы. Сделайте `git push` в ветку `master`. В ответе отправьте ссылку на ваш открытый репозиторий с изменённым `playbook` и заполненным `README.md`.
+
+https://github.com/chinchanchonTom/netology_ansible/blob/main/08-ansible-01-base/img/prod_vault.png
 
 
 13. Предоставьте скриншоты результатов запуска команд.
