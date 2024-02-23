@@ -6,7 +6,10 @@
 
 Данный playbook Автоматически устанавливает и насатраивает clickhouse и vector для уже настроенных докер контейнеров. 
 Данные для изменения хостов находятся в playbook\inventory\prod используйте эти строки что бы изменить: Имя группы хостов, имя хостов и способ подключения и т.д
-shell ```
+
+
+
+```shell
 
   click-docker: # имя группы хостов 
     hosts:
@@ -25,7 +28,7 @@ shell ```
 
 Для выбора версии и архитектуры зайдите и замените переменные в playbook\groupvars\click-docker или vector-docker соответвующие данные 
 
-shell ```
+```shell
 
 
 clickhouse_version: "22.3.3.44"
@@ -48,7 +51,8 @@ ansible-lint site.yml
 ```
 
 Что бы запустить playbook запустите команду 
-shell ```
+
+```shell
 
 ansible-playbook -i /inventory/prod.yml site.yml
 
