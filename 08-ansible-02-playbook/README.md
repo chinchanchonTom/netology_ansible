@@ -44,7 +44,7 @@ vector_arch: "x86_64"
 --- 
 ## запуск и проверка 
 Для проверки выполните и исправьте ошибки 
-shell ```
+```shell
 
 ansible-lint site.yml
 
