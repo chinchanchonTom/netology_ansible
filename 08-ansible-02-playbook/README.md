@@ -55,3 +55,4 @@ ansible-playbook -i /inventory/prod.yml site.yml
 ```
 Где укажете путь до файла конфигурации и имя playbook 
 
+qwerer
