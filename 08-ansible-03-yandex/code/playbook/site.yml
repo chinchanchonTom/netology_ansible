@@ -1,0 +1,147 @@
+---  
+- name: Install Clickhouse
+  hosts: clickhouse
+  handlers:
+    - name: Start clickhouse service
+      become: true
+      ansible.builtin.service:
+        name: clickhouse-server
+        state: restarted
+  tasks:
+    - block:
+        - name: Get clickhouse distrib
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
+            dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
+          with_items: "{{ clickhouse_packages }}"
+      rescue:
+        - name: Get clickhouse distrib
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
+            dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
+    - name: Install clickhouse packages
+      become: true
+      ansible.builtin.yum: 
+        name:
+          - clickhouse-common-static-{{ clickhouse_version }}.rpm
+          - clickhouse-client-{{ clickhouse_version }}.rpm
+          - clickhouse-server-{{ clickhouse_version }}.rpm
+      notify: Start clickhouse service
+    - name: Flush handlers
+      meta: flush_handlers
+    - name: Create database
+      ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
+      register: create_db
+      failed_when: create_db.rc != 0 and create_db.rc !=82
+      changed_when: create_db.rc == 0
+
+
+- name: Install Vector
+  hosts: vector
+  tasks:
+    - name: Ensure vector directory exists
+      ansible.builtin.file:
+        path: "{{ vector_path }}"
+        state: directory
+        mode: "0755"
+    - name: Donwload and unpack Vector archive
+      ansible.builtin.unarchive:
+        src: https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-{{ vector_arch }}-unknown-linux-musl.tar.gz
+        remote_src: true
+        dest: "{{ vector_path }}"
+        extra_opts:
+          - --strip-components=2
+        creates: "{{ vector_path }}/bin"
+    - name: Vector to systemd
+      become: true
+      ansible.builtin.copy:
+        src: "{{ vector_path }}/etc/systemd/vector.service"
+        dest: /etc/systemd/system/
+        remote_src: true
+        mode: preserve
+    - name: Update environment for vector | Update profile
+      ansible.builtin.lineinfile:
+        path: "$HOME/.bash_profile"
+        search_string: "export PATH"
+        line: "export PATH=\"{{ vector_path }}/bin:$PATH\""
+    - name: Configure Vector | Ensure config directory exists
+      ansible.builtin.file:
+        path: "{{ vector_config_path }}"
+        state: directory
+        mode: "0755"
+    - name: Configure Vector | Template config
+      ansible.builtin.template:
+        src: vector.toml.j2
+        mode: "0644"
+        dest: "{{ vector_config_path }}/vector.toml"
+    - name: Start Vector
+      ansible.builtin.shell:
+        cmd: "source $HOME/.bash_profile && vector --config {{ vector_config_path }}/vector.toml"
+        executable: /bin/bash
+        stdin: test
+      changed_when: false
+      register: vector
+    - name: Vector stdout
+      ansible.builtin.debug:
+        var: vector.stdout
+
+- name: install Nginx and lighthouse 
+  hosts: lighthouse
+  handlers:
+    - name: restart Nginx
+      become: true
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+  tasks:
+    - name: Add epel-release repo
+      become: true
+      yum:
+        name: epel-release
+        state: present
+    - name: Install Nginx and Git
+      become: true
+      ansible.builtin.yum:
+        name: nginx, git
+        state: present
+    - name: nginx systemd start 
+      become: true
+      ansible.builtin.systemd:
+        name: nginx
+        enabled: true
+        state: started
+    - name: Check lighthouse config
+      register: lh_exists
+      ansible.builtin.file:
+        path: "{{lighthouse_path}}/app.js"
+      ignore_errors: true
+    - name: Install lighthouse from git
+      become: true
+      when: lh_exists.state == "absent"
+      ansible.builtin.git:
+        repo: https://github.com/VKCOM/lighthouse.git
+        version: master
+        dest: "{{lighthouse_path}}"
+    - name: Change lighthouse host default
+      when: lh_exists.state == "absent"
+      ansible.builtin.replace:
+        path: "{{lighthouse_path}}/app.js"
+        regexp: '127\.0\.0\.1:8123\/'
+        replace: "{{ hostvars['clickhouse-01'].ansible_host }}:8123/?user=vector&password={{ vector_password }}"
+        unsafe_writes: true
+      notify: restart Nginx
+    - name: Create lighthouse config
+      become: true
+      ansible.builtin.template:
+        src: lighthouse.conf.j2
+        dest: /etc/nginx/conf.d/lighthouse.conf
+        mode: "0644"
+      notify: restart Nginx
+    - name: Print ip addres to connect
+      ansible.builtin.debug:
+        msg: "Lighthouse is available at http://{{ ansible_host }}:{{ lighthouse_port }}/"
+        
+
+        
+    
+
