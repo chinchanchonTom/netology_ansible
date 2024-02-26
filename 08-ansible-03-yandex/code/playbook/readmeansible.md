@@ -22,7 +22,7 @@ Playbook разбит на 3 отделных настройки в 1 playbook.
 2. IP адреса хостов 
 3.  Пользователя под котором вы хотите подключаться (Должны быть прописаны заранее и иметь доступ по ssh)
 
-shell ```
+```shell
 
 clickhouse:# Группа хостов для установки clickhouse 
   hosts:
@@ -46,7 +46,7 @@ lighthouse:# Группа хостов для установки lighthouse
 ```
 
 Выбора версии, архитектуры и порта для  Vector, Clickhouse и Lighthouse нужно изменить параметры в group_vars/{Vector, Clickhouse ,Lighthouse}
-shell ```
+```shell
 clickhouse_version: "22.3.3.44"
 
 vector_version: "0.33.0"
@@ -59,7 +59,7 @@ lighthouse_port: 8080
 ---
  Установка 
 
-shell ```
+```shell
 
 ansible-playbook -i invetory/prod.yml site.yml
 
