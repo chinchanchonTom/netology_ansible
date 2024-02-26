@@ -1,13 +1,13 @@
 --- 
-### Clickhouse-Vector-Lighthouse-playbook
+# Clickhouse-Vector-Lighthouse-playbook
 ---
 
 Этот playbook развертывает на ВМ инфаструктуру для сбора и анализа логов при помощи Clickhouse-Vector-Lighthouse.
 
 Playbook разбит на 3 отделных настройки в 1 playbook.
-# Clickhouse в качестве БД
-# Vector в качестве транспорта
-# Lighthouse в качестве просмотрщика таблицы с логами
+### Clickhouse в качестве БД
+### Vector в качестве транспорта
+### Lighthouse в качестве просмотрщика таблицы с логами
 
 
 В конце плейбука выдает конечную ссылку для подключения в котором уже все подключения к БД прописаны. 
