@@ -30,20 +30,10 @@ clickhouse:# Группа хостов для установки clickhouse
       ansible_host: <IP address># IP адресс ВМ
       ansible_user: <User># Пользователь 
       ansible_connection: ssh #Способ подключения 
-vector:# Группа хостов для установки vector
-  hosts:
-    vector-01:# Название ВМ
-      ansible_host: <IP address>#
-      ansible_user: <User>#
-      ansible_connection: ssh#
-lighthouse:# Группа хостов для установки lighthouse
-  hosts:#
-    lighthouse-01:# Название ВМ
-      ansible_host: <IP address> # IP адресс ВМ
-      ansible_user: <User> # IP адресс ВМ
-      ansible_connection: ssh # IP адресс ВМ
 
 ```
+Пример для Clickhouse для отстальных тоже самое 
+
 
 Выбора версии, архитектуры и порта для  Vector, Clickhouse и Lighthouse нужно изменить параметры в group_vars/{Vector, Clickhouse ,Lighthouse}
 ```shell
