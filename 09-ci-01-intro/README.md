@@ -51,9 +51,9 @@
 XML
 
 
-![БАГ](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-01-intro/XML/Software%20Simplified%20Workflow%20for%20Project%20bug.xml)
+[БАГ](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-01-intro/XML/Software%20Simplified%20Workflow%20for%20Project%20bug.xml)
 
 
 
-![Остальное](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-01-intro/XML/Software%20Simplified%20Workflow%20for%20Project%20TES.xml)
+[Остальное](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-01-intro/XML/Software%20Simplified%20Workflow%20for%20Project%20TES.xml)
 
