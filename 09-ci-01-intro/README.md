@@ -39,16 +39,21 @@
 ---
 ## РЕШЕНИЕ
 
-
+# схема баг
 ![схема баг](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-01-intro/image/%D1%81%D1%85%D0%B5%D0%BC%D0%B0%20bug.png)
 
-
+# Остальные задачи
 ![Остальные задачи ](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-01-intro/image/%D1%81%D1%85%D0%B5%D0%BC%D0%B0%20task.png)
 
 
 
 ---
 XML
+
+
 ![БАГ](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-01-intro/XML/Software%20Simplified%20Workflow%20for%20Project%20bug.xml)
+
+
+
 ![Остальное](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-01-intro/XML/Software%20Simplified%20Workflow%20for%20Project%20TES.xml)
 
