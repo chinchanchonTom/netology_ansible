@@ -77,7 +77,7 @@
 4. Проверьте `mvn --version`.
 5. Заберите директорию [mvn](./mvn) с pom.
 
-
+![sonar first test](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-03-cicd/image/mvn-v.png)
 
 ### Основная часть
 
@@ -90,7 +90,8 @@
 
 ## Решение 
 
-
-
-
 ![sonar first test](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-03-cicd/image/mvn%20packer.png)
+
+
+
+[Pod.xml](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-03-cicd/mvn/pom.xml)
