@@ -15,6 +15,10 @@
 ## Решение 
 
 
+![inventory](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-03-cicd/image/Create%20VM.png)
+
+![inventory](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-03-cicd/image/happy_ansible%20with%20postgresql12.png)
+
 
 ## Знакомоство с SonarQube
 
@@ -29,6 +33,16 @@
 7. Исправьте ошибки, которые он выявил, включая warnings.
 8. Запустите анализатор повторно — проверьте, что QG пройдены успешно.
 9. Сделайте скриншот успешного прохождения анализа, приложите к решению ДЗ.
+
+----
+## Решение 
+
+![sonar first test](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-03-cicd/image/sonar%20first%20scann.png)
+
+
+![sonar first test](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-03-cicd/image/second%20test%20sonar%20passed.png)
+
+
 
 ## Знакомство с Nexus
 
@@ -46,6 +60,13 @@
 3. Проверьте, что все файлы загрузились успешно.
 4. В ответе пришлите файл `maven-metadata.xml` для этого артефекта.
 
+----
+## Решение 
+
+![Nexus ver. 8_282](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-03-cicd/image/nexus%208%20ver.1.png)
+
+![Nexus ver. 8_102](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-03-cicd/image/nexus%208%20ver.2.png)
+
 ### Знакомство с Maven
 
 ### Подготовка к выполнению
@@ -56,6 +77,8 @@
 4. Проверьте `mvn --version`.
 5. Заберите директорию [mvn](./mvn) с pom.
 
+
+
 ### Основная часть
 
 1. Поменяйте в `pom.xml` блок с зависимостями под ваш артефакт из первого пункта задания для Nexus (java с версией 8_282).
@@ -64,3 +87,10 @@
 4. В ответе пришлите исправленный файл `pom.xml`.
 
 ---
+
+## Решение 
+
+
+
+
+![sonar first test](https://github.com/chinchanchonTom/netology_ansible/blob/test/09-ci-03-cicd/image/mvn%20packer.png)
