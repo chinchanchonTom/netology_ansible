@@ -41,7 +41,10 @@
 
 # Решение 
 
-[код](https://github.com/chinchanchonTom/lighthouse-role)
-[код](https://github.com/chinchanchonTom/vector-role)
+[lighthouse-role](https://github.com/chinchanchonTom/lighthouse-role)
+
+
+
+[vector-role](https://github.com/chinchanchonTom/vector-role)
 
 
