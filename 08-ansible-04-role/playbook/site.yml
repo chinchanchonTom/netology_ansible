@@ -1,0 +1,21 @@
+---
+- name: clickhouse
+  hosts: clickhouse
+  tags: "1.0.0"
+  roles: 
+    - role: clickhouse
+
+- name: vector
+  hosts: vector
+  tags: "1.0.0"
+  roles: 
+    - role: vector
+
+- name: lighthouse
+  hosts: lighthouse
+  tags: "1.0.0"
+  roles: 
+    - role: lighthouse
+
+
+

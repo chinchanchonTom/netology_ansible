@@ -39,8 +39,9 @@
 
 ---
 
-### Как оформить решение задания
+# Решение 
 
-Выполненное домашнее задание пришлите в виде ссылки на .md-файл в вашем репозитории.
+[код](https://github.com/chinchanchonTom/lighthouse-role)
+[код](https://github.com/chinchanchonTom/vector-role)
 
----
+
