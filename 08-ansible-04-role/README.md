@@ -41,6 +41,8 @@
 
 # Решение 
 
+[Основной playbook](https://github.com/chinchanchonTom/netology_ansible/tree/test/08-ansible-04-role/playbook)
+
 [lighthouse-role](https://github.com/chinchanchonTom/lighthouse-role)
 
 
